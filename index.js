@@ -11,7 +11,7 @@ const { PORT, DB_CONNECTION_STRING } = process.env;
 
 //Connect express with Mongoose and handle initial errors
 mongoose
-  .connect('mongodb://localhost:27017/test', {
+  .connect(DB_CONNECTION_STRING, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
