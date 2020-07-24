@@ -6,8 +6,18 @@ const ClientSchema = new Schema({
   lastName: String,
   phone: Number,
   email: String,
-  treatments: [{ type: String, ref: 'Treatment' }],
-  default: [],
+  /*treatments: [
+    {
+      type: String,
+      ref: 'Treatment',
+      default: [],
+    },
+  ],*/
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
 });
 
-exports.module = mongoose.model('Client', ClientSchema);
+const Client = mongoose.model('Client', ClientSchema);
+module.exports = Client;

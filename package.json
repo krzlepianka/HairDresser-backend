@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "debug": "ndb index.js"
   },
   "author": "Krzysztof Lepianka",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "mongoose": "^5.9.25"
   },
   "devDependencies": {
+    "ndb": "^1.1.5",
     "nodemon": "^2.0.4"
   }
 }
