@@ -27,8 +27,8 @@ const userSchema = new Schema({
   },
   clients: [
     {
-      type: String,
-      ref: 'Treatment',
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Client',
       default: [],
     },
   ],

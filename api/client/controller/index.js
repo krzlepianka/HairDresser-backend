@@ -1,9 +1,17 @@
 const express = require('express');
 const Client = require('../model/index');
+const User = require('../../user/model/index');
 
-exports.createUser = async (req, res) => {
+exports.createClients = async (req, res) => {
   try {
-    const client = await Client.create(req.body);
+    const { data } = res.locals.decode;
+    const client = await Client.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phone: req.body.phone,
+      email: req.body.email,
+      createdBy: data,
+    });
     res.status(200).json({
       message: 'you added a new client',
       client,
@@ -17,8 +25,8 @@ exports.createUser = async (req, res) => {
 
 exports.getClients = async (req, res) => {
   try {
-    console.log('lol');
-    const clients = await Client.find();
+    const { data } = res.locals.decode;
+    const clients = await Client.find({ createdBy: data });
     res.status(200).json({
       message: 'clients list',
       clients,

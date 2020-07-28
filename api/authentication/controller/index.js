@@ -66,9 +66,17 @@ exports.signIn = async (req, res) => {
   }
 };
 
-exports.checkToken = (req, res, next) => {
-  const { authorization } = req.headers;
-  let token = authorization.slice(6, authorization.length);
-  console.log(token);
+exports.checkToken = async (req, res, next) => {
+  try {
+    const { authorization } = req.headers;
+    const token = authorization.split(' ')[1];
+    const decode = await jwt.verify(token, 'secret');
+    res.locals.decode = decode;
+  } catch (error) {
+    return res.status(200).json({
+      message: error.message,
+      error,
+    });
+  }
   next();
 };

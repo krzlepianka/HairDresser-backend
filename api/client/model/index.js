@@ -6,13 +6,13 @@ const ClientSchema = new Schema({
   lastName: String,
   phone: Number,
   email: String,
-  /*treatments: [
+  treatments: [
     {
       type: String,
       ref: 'Treatment',
       default: [],
     },
-  ],*/
+  ],
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
