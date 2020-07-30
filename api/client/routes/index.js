@@ -5,7 +5,13 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(authController.checkToken, clientController.createClients)
+  .post(authController.checkToken, clientController.createClient)
   .get(authController.checkToken, clientController.getClients);
+
+router
+  .route('/:id')
+  .get(authController.checkToken, clientController.getClient)
+  .put(authController.checkToken, clientController.editClient)
+  .delete(authController.checkToken, clientController.deleteClient);
 
 module.exports = router;
